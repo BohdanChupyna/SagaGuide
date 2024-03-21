@@ -1,6 +1,6 @@
 # Introduction
 
-Saga Guide is designed to enhance the gaming experience for game masters and players of the GURPS Fourth Edition roleplaying game.
+Saga Guide is a web application designed to enhance the gaming experience for game masters and players of the GURPS Fourth Edition roleplaying game.
 Currently, Saga Guide offers an interactive character sheet, with more exciting features on the horizon.
 
 # Getting Started
@@ -13,16 +13,18 @@ To build and run saga guide follow next steps:
 
 Requirements:
 1. IDE for C# and TypeScript (Rider, Visual Studio, Visual Code)
-2. .net 7
-3. Node.js
-4. npm
-5. docker or docker desktop
+1. .net 7
+1. Node.js
+1. npm
+1. docker or docker desktop
 
 Build steps:
 1. Navigate to ".\src\frontend" and run "npm install" in console or IDE terminal.
-2. Run ".\src\docker-compose.yml" using IDE or docker
-3. Wait and check that docker containers are up and running
-4. In browser navigate to http://localhost:3000/home to access Saga Guide
+1. Run ".\src\docker-compose.yml" using IDE or docker
+1. Wait and check that docker containers are up and running
+1. In browser navigate to http://localhost:3000/home to access Saga Guide
+1. Swagger api page for back-end is available at http://localhost:5258/swagger/index.html
+1. Keycloak page is available at http://localhost:8080/
 
 # Contribute
 
