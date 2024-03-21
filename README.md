@@ -1,21 +1,28 @@
-http://localhost:5258/swagger/index.html
-
 # Introduction
 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.
+Saga Guide is designed to enhance the gaming experience for game masters and players of the GURPS Fourth Edition roleplaying game.
+Currently, Saga Guide offers an interactive character sheet, with more exciting features on the horizon.
 
 # Getting Started
 
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-
-1. Installation process
-2. Software dependencies
-3. Latest releases
-4. API references
+The latest version of Saga Guide is available at [saga.guide](https://saga.guide)
 
 # Build and Test
 
-TODO: Describe and show how to build your code and run the tests.
+To build and run saga guide follow next steps:
+
+Requirements:
+1. IDE for C# and TypeScript (Rider, Visual Studio, Visual Code)
+2. .net 7
+3. Node.js
+4. npm
+5. docker or docker desktop
+
+Build steps:
+1. Navigate to ".\src\frontend" and run "npm install" in console or IDE terminal.
+2. Run ".\src\docker-compose.yml" using IDE or docker
+3. Wait and check that docker containers are up and running
+4. In browser navigate to http://localhost:3000/home to access Saga Guide
 
 # Contribute
 
