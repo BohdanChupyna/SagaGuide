@@ -1,0 +1,42 @@
+version: '3.4'
+
+
+services:
+  sagaguide-frontend:
+    image: ${DOCKER_REGISTRY-}sagaguide-frontend
+    build:
+      context: ./frontend
+      dockerfile: frontend.Dockerfile
+    
+  sagaguide-api:
+    image: ${DOCKER_REGISTRY-}sagaguide-api
+    build:
+      context: .
+      dockerfile: SagaGuide/SagaGuide.Api/Dockerfile
+    depends_on:
+      postgresDb:
+        condition: service_healthy
+
+  postgresDb:
+    image: postgres
+    volumes:
+      - postgresqldbvolume:/var/lib/postgresql/data
+
+  keycloak:
+    image: ${DOCKER_REGISTRY-}keycloak
+    build:
+      context: .
+      dockerfile: ./keycloak/keycloak.Dockerfile
+    depends_on:
+      keycloakdb:
+        condition: service_healthy
+    
+  keycloakdb:
+    image: postgres
+    volumes:
+      - keycloackdbbvolume:/var/lib/postgresql/data
+
+volumes:
+  postgresqldbvolume:
+  keycloackdbbvolume:
+    

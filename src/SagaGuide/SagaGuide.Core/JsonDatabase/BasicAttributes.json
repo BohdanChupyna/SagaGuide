@@ -1,0 +1,42 @@
+[
+  {
+    "defaultValue": 10,
+    "type": "Strength",
+    "pointsPerLevel": 10,
+    "bookReference": {
+      "pageNumber": 14,
+      "sourceBook": "BasicSetFourthEdition"
+    },
+    "id": "cc4296c5-db97-4b85-a559-845122a81fac"
+  },
+  {
+    "defaultValue": 10,
+    "type": "Dexterity",
+    "pointsPerLevel": 20,
+    "bookReference": {
+      "pageNumber": 15,
+      "sourceBook": "BasicSetFourthEdition"
+    },
+    "id": "e0fb50ed-acef-4e11-8541-0f8bfa91c86a"
+  },
+  {
+    "defaultValue": 10,
+    "type": "Intelligence",
+    "pointsPerLevel": 20,
+    "bookReference": {
+      "pageNumber": 15,
+      "sourceBook": "BasicSetFourthEdition"
+    },
+    "id": "3d8f9bc4-5bf8-460e-987f-bb7ee0e95b8e"
+  },
+  {
+    "defaultValue": 10,
+    "type": "Health",
+    "pointsPerLevel": 10,
+    "bookReference": {
+      "pageNumber": 15,
+      "sourceBook": "BasicSetFourthEdition"
+    },
+    "id": "ebab0aa2-57ba-4e8c-929c-34255e5aaec1"
+  }
+]

@@ -1,0 +1,25 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Production" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <deployment type="docker-compose.yml">
+      <settings>
+        <option name="envFilePath" value="" />
+        <option name="commandLineOptions" value="--build" />
+        <option name="secondarySourceFiles">
+          <list>
+            <option value="production/docker-compose.yml" />
+          </list>
+        </option>
+        <option name="services">
+          <list>
+            <option value="sagaguide-api" />
+            <option value="sagaguide-frontend" />
+            <option value="keycloak" />
+          </list>
+        </option>
+        <option name="sourceFilePath" value="production/docker-compose.override.yml" />
+      </settings>
+    </deployment>
+    <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+    <method v="2" />
+  </configuration>
+</component>

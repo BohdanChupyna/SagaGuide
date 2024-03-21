@@ -1,0 +1,281 @@
+{
+  "type": "skill_list",
+  "version": 4,
+  "rows": [
+    {
+      "id": "435aab38-e1ac-43ac-89bd-c72cd1b2dc1a",
+      "type": "skill",
+      "name": "Accounting",
+      "reference": "B174",
+      "tags": [
+        "Business"
+      ],
+      "difficulty": "iq/h",
+      "points": 1,
+      "defaults": [
+        {
+          "type": "iq",
+          "modifier": -6
+        },
+        {
+          "type": "skill",
+          "name": "Finance",
+          "modifier": -4
+        },
+        {
+          "type": "skill",
+          "name": "Mathematics",
+          "specialization": "Statistics",
+          "modifier": -5
+        },
+        {
+          "type": "skill",
+          "name": "Merchant",
+          "modifier": -5
+        }
+      ]
+    },
+    {
+    "id": "c0c61ffa-13d5-46aa-a50b-9376a1b29212",
+    "type": "skill",
+    "name": "Engineer",
+    "reference": "B190",
+    "tags": [
+      "Design",
+      "Engineer",
+      "Invention"
+    ],
+    "specialization": "Materials", 
+    "notes": "All important citizens and businesses, and most unimportant ones; all public buildings and most houses",
+    "tech_level": "",
+    "difficulty": "iq/h",
+    "points": 1, 
+      "defaulted_from": {
+        "type": "skill",
+        "name": "Test Default",
+        "specialization": "Test Specialization",
+        "level": "1",
+        "adjusted_level": "2",
+        "points": "3",
+        "modifier": -3
+      },
+    "defaults": [
+      {
+        "type": "skill",
+        "name": "Chemistry",
+        "modifier": -6
+      },
+      {
+        "type": "skill",
+        "name": "Metallurgy",
+        "modifier": -6
+      }
+    ],
+    "prereqs": {
+      "type": "prereq_list",
+      "all": true,
+      "prereqs": [
+        {
+          "type": "prereq_list",
+          "all": true,
+          "when_tl": {
+            "compare": "at_least",
+            "qualifier": 5
+          },
+          "prereqs": [
+            {
+              "type": "skill_prereq",
+              "has": true,
+              "name": {
+                "compare": "is",
+                "qualifier": "mathematics"
+              },
+              "specialization": {
+                "compare": "is",
+                "qualifier": "applied"
+              }
+            }
+          ]
+        },
+        {
+          "type": "prereq_list",
+          "all": false,
+          "prereqs": [
+            {
+              "type": "skill_prereq",
+              "has": true,
+              "name": {
+                "compare": "is",
+                "qualifier": "metallurgy"
+              },
+              "level": {
+                "compare": "at_least",
+                "qualifier": 14
+              }
+            },
+            {
+              "type": "trait_prereq",
+              "has": true,
+              "name": {
+                "compare": "starts_with",
+                "qualifier": "weapon master"
+              },
+              "level": {
+                "compare": "at_least",
+                "qualifier": 10
+              },
+              "notes": {
+                "compare": "contains",
+                "qualifier": "Written (Native"
+              }
+            },
+            {
+              "type": "attribute_prereq",
+              "has": true,
+              "qualifier": {
+                "compare": "at_least",
+                "qualifier": 12
+              },
+              "which": "dx",
+              "combined_with": "will"
+            }
+          ]
+        }
+      ]
+    }
+    },
+    {
+      "id": "123aab38-e1ac-43ac-89bd-c72cd1b2dc1a",
+      "type": "skill",
+      "name": "Accounting",
+      "reference": "B174",
+      "tags": [
+        "Business"
+      ],
+      "difficulty": "iq/h",
+      "points": 1,
+      "defaults": [
+        {
+          "type": "iq",
+          "modifier": -6
+        },
+        {
+          "type": "skill",
+          "name": "Finance",
+          "modifier": -4
+        },
+        {
+          "type": "skill",
+          "name": "Mathematics",
+          "specialization": "Statistics",
+          "modifier": -5
+        },
+        {
+          "type": "skill",
+          "name": "Merchant",
+          "modifier": -5
+        }
+      ]
+    },
+    {
+      "id": "435aab38-e1ac-43ac-89bd-c72cd1b2dc1a",
+      "type": "skill",
+      "name": "Accounting",
+      "specialization": "Statistics",
+      "reference": "B200",
+      "tags": [
+        "TestTag"
+      ],
+      "difficulty": "iq/h",
+      "points": 1,
+      "defaults": [
+        {
+          "type": "iq",
+          "modifier": -6
+        },
+        {
+          "type": "skill",
+          "name": "Finance",
+          "modifier": -4
+        },
+        {
+          "type": "skill",
+          "name": "Mathematics",
+          "specialization": "Statistics",
+          "modifier": -5
+        }
+      ]
+    },
+    {
+      "id": "df4adc7d-6ce7-41bd-a5ee-5d22e3605cd3",
+      "type": "technique",
+      "name": "Feint",
+      "reference": "B231,PY65:19",
+      "tags": [
+        "Combat",
+        "Melee Combat",
+        "Technique",
+        "Weapon"
+      ],
+      "difficulty": "h",
+      "points": 2,
+      "default": {
+        "type": "skill",
+        "name": "@Unarmed or Melee Weapon Skill@"
+      },
+      "limit": 4,
+      "prereqs": {
+        "type": "prereq_list",
+        "all": true,
+        "prereqs": [
+          {
+            "type": "skill_prereq",
+            "has": true,
+            "name": {
+              "compare": "is",
+              "qualifier": "@Unarmed or Melee Weapon Skill@"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "6413ccb2-8ea0-4092-ba1b-7e223317999d",
+      "type": "technique",
+      "name": "Feint",
+      "reference": "B231,MA73",
+      "tags": [
+        "Combat",
+        "Melee Combat",
+        "Technique",
+        "Weapon"
+      ],
+      "difficulty": "h",
+      "points": 2,
+      "default": {
+        "type": "skill",
+        "name": "Brawling"
+      },
+      "limit": 4
+    },
+    {
+      "id": "6413ccb2-8ea0-4092-ba1b-7e223317999d",
+      "type": "technique",
+      "name": "Feint",
+      "reference": "B231,MA73",
+      "tags": [
+        "Combat",
+        "Melee Combat",
+        "Technique",
+        "Weapon"
+      ],
+      "difficulty": "h",
+      "points": 2,
+      "default": {
+        "type": "skill",
+        "name": "Brawling"
+      },
+      "limit": 4
+    }
+  ]
+}

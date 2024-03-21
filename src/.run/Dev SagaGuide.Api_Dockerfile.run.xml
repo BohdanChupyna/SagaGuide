@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Dev SagaGuide.Api/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+    <deployment type="dockerfile">
+      <settings>
+        <option name="containerName" value="sagaguide-api" />
+        <option name="contextFolderPath" value="../../SagaGuide/src" />
+        <option name="publishAllPorts" value="true" />
+        <option name="sourceFilePath" value="SagaGuide/SagaGuide.Api/Dockerfile" />
+      </settings>
+    </deployment>
+    <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="true" />
+    <method v="2" />
+  </configuration>
+</component>

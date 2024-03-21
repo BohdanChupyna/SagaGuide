@@ -1,0 +1,144 @@
+version: '3.4'
+
+networks:
+  nginx-network:
+
+services:
+  sagaguide-frontend:
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+      - 80
+    networks:
+      - nginx-network
+    volumes:
+      - ${MOUNT_POINT}/logs:/logs
+  
+  sagaguide-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - PORT=80
+      - MyDb__Host=${MYDB_HOST}
+      - MyDb__Port=5432
+      - MyDb__DbName=${MYDB_DBNAME}
+      - MyDb__UserName=${MYDB_USER}
+      - MyDb__Password=${MYDB_PASSWORD}
+      - Auth__InternalIssuer=${KEYCLOAK_INT_ISSUER}
+      - Auth__ExternalIssuer=${KEYCLOAK_EXT_ISSUER}
+    ports:
+      - "5258:80"
+      - "5259:81"
+    expose:
+      - 80
+      - 81
+    networks: 
+      - nginx-network
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${MOUNT_POINT}/logs:/logs
+      - ${HOST_GCSMASTERLIBRARYPATH}:${MYDB_GCSMASTERLIBRARYPATH}
+  
+  postgresDb:
+    restart: always
+    environment:
+      - POSTGRES_DB=${MYDB_DBNAME}
+      - POSTGRES_USER=${MYDB_USER}
+      - POSTGRES_PASSWORD=${MYDB_PASSWORD}
+    ports:
+      # <Port exposed> : < postgres Port running inside container>
+      - '${MYDB_PORT}:5432'
+    expose:
+      # Opens port MYDB_PORT on the container
+      - 5432
+    networks:
+      - nginx-network
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U ${MYDB_USER} -d ${MYDB_DBNAME}'"]
+      interval: 10s
+      retries: 5
+      timeout: 3s
+      start_period: 20s
+        
+  # KeyCloak
+  keycloak:
+    environment:
+#      KEYCLOAK_ENABLE_STATISTICS: 'true'
+#      KC_HOSTNAME: localhost #${KEYCLOAK_HOSTNAME}
+#      KC_PROXY: edge
+#      KC_PROXY_ADDRESS_FORWARDING: 'true'
+#      KC_HTTP_ENABLED: 'true'
+      KC_HTTPS_CERTIFICATE_FILE: /opt/keycloak/conf/keycloack.crt.pem
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /opt/keycloak/conf/keycloack.key.pem
+      
+      KC_DB: postgres
+      KC_DB_SCHEMA: public
+      KC_DB_URL_HOST: keycloakdb
+      KC_DB_URL_PORT: 5432
+      KC_DB_URL_DATABASE: ${KEYCLOAK_DB_NAME}
+      #KC_DB_URL can be used instead of KC_DB_URL_* properties
+      #KC_DB_URL: jdbc:postgresql://keycloakdb:5432/${KEYCLOAK_DB_NAME}
+      KC_DB_USERNAME: ${KEYCLOAK_DB_USER}
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
+      
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN_USERNAME}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_HOSTNAME: localhost
+      KC_HEALTH_ENABLED: true
+      KC_METRICS_ENABLED: true
+      KC_LOG: console
+    networks:
+      - nginx-network
+    expose:
+      - 8080
+      - 8443
+    ports:
+      - 8080:8080
+      - 8443:8443
+    volumes:
+      - ${SAGAGUIDE_REPOSITORY_PATH}/src/keycloak:/opt/keycloak/conf
+      - ${SAGAGUIDE_REPOSITORY_PATH}/src/keycloak/gmspace-realm.json:/opt/keycloak/data/import/realm-import.json
+      # run next command in docker container to export dev-testing realm.
+      # /opt/keycloak/bin/kc.sh export --dir /opt/keycloak/conf --realm gmspace --users realm_file
+    healthcheck:
+      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8080' || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 90s
+    restart: unless-stopped
+    depends_on:
+      keycloakdb:
+        condition: service_healthy
+    command:
+      - start-dev
+      - --import-realm
+      
+  keycloakdb:
+    image: postgres
+    environment:
+      - POSTGRES_DB=${KEYCLOAK_DB_NAME}
+      - POSTGRES_USER=${KEYCLOAK_DB_USER}
+      - POSTGRES_PASSWORD=${KEYCLOAK_DB_PASSWORD}
+    networks:
+      - nginx-network
+    healthcheck:
+          test: [ "CMD", "pg_isready", "-q", "-d", "${KEYCLOAK_DB_NAME}", "-U", "${KEYCLOAK_DB_USER}" ]
+          interval: 10s
+          timeout: 5s
+          retries: 3
+          start_period: 60s
+    restart: unless-stopped
+
+#  nginx-container:
+#    image: nginx:latest
+#    ports:
+#      - "443:443"
+#      - "80:80"
+#    volumes:
+#      - ${SAGAGUIDE_REPOSITORY_PATH}/src/SagaGuide/nginx.conf:/etc/nginx/nginx.conf
+#    depends_on:
+#      keycloak:
+#        condition: service_healthy

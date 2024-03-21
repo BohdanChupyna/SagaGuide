@@ -1,0 +1,9 @@
+Navigate to infrastructure project folder: C:\..\SagaGuide\src\SagaGuide\SagaGuide.Infrastructure
+
+To Create Migration:
+dotnet ef --startup-project ../SagaGuide.Api migrations add InitialCreate --context GurpsDbContext --project ../SagaGuide.Infrastructure --output-dir ../SagaGuide.Infrastructure/EntityFramework/Migrations
+
+MySQL
+     dotnet ef --startup-project ../SagaGuide.Api database update  --connection "server=127.0.0.1;port=3306;database=SagaGuide;user=SagaGuideUser;password=SagaGuidePass;"  --context GurpsDbContext 
+or server=mysqldb;
+
