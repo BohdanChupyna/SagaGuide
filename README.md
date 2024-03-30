@@ -1,6 +1,6 @@
 # Introduction
 
-Saga Guide is a web application designed to enhance the gaming experience for game masters and players of the GURPS Fourth Edition roleplaying game.
+Saga Guide is open-source web application designed to enhance the gaming experience for game masters and players of the GURPS Fourth Edition roleplaying game.
 Currently, Saga Guide offers an interactive character sheet, with more exciting features on the horizon.
 
 # Getting Started
@@ -27,11 +27,22 @@ Build steps:
 1. Keycloak page is available at http://localhost:8080/
 
 # Contribute
+Everyone is welcome to contribute to Saga Guide development.
 
-TODO: Explain how other users and developers can contribute to make your code better.
+If you have any ideas/suggestion you can post them as GitHub Discussions or on [Saga Guide discord server](https://discord.gg/KH8TzTMR8p)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
+I'm new to GitHub, so I propose to test the workflow below and see how it goes.
+If you have any suggestion about it, please let me know by GitHub Discussions or  [Saga Guide discord server](https://discord.gg/KH8TzTMR8p) or bohdanchupyna@gmail.com
+1. Join [Saga Guide discord server](https://discord.gg/KH8TzTMR8p) for general communication, calls, etc.;
+2. Set up a local version of Saga Guide;
+3. Check-out [Saga Guide project](https://github.com/users/BohdanChupyna/projects/1/views/1) with tasks ready to be picked up. If there are any task-related questions, ask them in the task comment section on GitHub;
+4. Create a dedicated branch for your task;
+5. Implement the task;
+6. Write/update tests to cover new functionality;
+7. Perform general manual testing;
+6. Create a pull request;
+7. Ask/assigne Bohdan Chupyna and anyone else you like to perform a code review.
+8. After code review your contribution will be merged and released to [saga.guide](https://saga.guide);
 
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Backlog
+There is a dedicated [Saga Guide project](https://github.com/users/BohdanChupyna/projects/1/views/1) with a backlog of planned tasks and current progress on them.

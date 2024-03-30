@@ -7,10 +7,12 @@ import {useAuth} from "react-oidc-context";
 import {Button, Divider, Link, Stack, Tooltip} from "@mui/material";
 import {SgTypographyPrimaryBody1, SgTypographyPrimaryBody2} from "../components/SgTypography";
 import CoffeeIcon from '@mui/icons-material/Coffee';
-import {SgDiscordIcon, SgRedditIcon} from "../components/sgIcons/sgIcons";
+import {SgDiscordIcon, SgGitHubIcon, SgRedditIcon} from "../components/sgIcons/sgIcons";
 import {useAppSelector} from "../redux/hooks";
 import {selectIsNavBarOpen} from "../redux/slices/navBar/navBarSlice";
 import {useNavigate} from "react-router-dom";
+import UkraineFlag from "../components/sgIcons/ukraine-flag.png";
+import {GitHub} from "@mui/icons-material";
 
 
 
@@ -37,7 +39,7 @@ const Home = () => {
                 <AppBarHeader />
                 <SgTypographyPrimaryBody1 variant={'h5'}>About Saga Guide</SgTypographyPrimaryBody1>
                 <SgTypographyPrimaryBody1>
-                    Saga Guide is designed to enhance the gaming experience for game masters and players of the GURPS Fourth Edition roleplaying game. <br />
+                    Saga Guide is open-source web application designed to enhance the gaming experience for game masters and players of the GURPS Fourth Edition roleplaying game.
                     Currently, Saga Guide offers an interactive character sheet, with more exciting features on the horizon.<br />
                 </SgTypographyPrimaryBody1>
 
@@ -63,12 +65,13 @@ const Home = () => {
                 <SgTypographyPrimaryBody1 variant={'h5'}>Join Saga Guide Community</SgTypographyPrimaryBody1>
                 <SgTypographyPrimaryBody1>
                     You are welcome to join the Saga Guide Discord server and Subreddit.<br />
-                    There you can find guides, fill a bug report, leave a feature request, or just reach out to the developer.<br />
-                    Also, you may contact developer at <span> </span>
+                    There you can find related news, guides, fill a bug report, leave a feature request, or just reach out to the developer.<br />
+                    Also, you can contact developer at <span> </span>
                     {/*?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}*/}
                     <Link href="mailto:sagaguideadm@gmail.com?subject=SagaGuide" target="_blank" rel="noopener noreferrer">
                         sagaguideadm@gmail.com
                     </Link><br />
+                    Everyone is welcome to contribute to Saga Guide development. For more information navigate to the GitHub repository.<br />
                 </SgTypographyPrimaryBody1>
                 <Tooltip title={"Discord server"}>
                     <Button variant="contained"
@@ -92,6 +95,19 @@ const Home = () => {
                             startIcon={<SgRedditIcon/>}
                     >
                         Subreddit
+                    </Button>
+                </Tooltip>
+                
+                <Tooltip title={"GitHub repository"}>
+                    <Button variant="contained"
+                            style={{backgroundColor: '#1976d2', maxWidth: '300px', alignSelf: 'center', margin: '10px'}}
+                            aria-label={"github-repository-button"}
+                            href="https://github.com/BohdanChupyna/SagaGuide"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            startIcon={<GitHub/>}
+                    >
+                        GitHub Repository
                     </Button>
                 </Tooltip>
                 
